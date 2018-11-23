@@ -22,7 +22,7 @@ end
 
 
 """*********************************************************************************************************************************
-   `rar,ierr = vsop87(tdj,ivers,ibody,prec)`
+   `rar,ierr = vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64 = 0.0)`
 
     Calculate VSOP87 values by calling original Fortran implementation.
 
@@ -44,7 +44,8 @@ and ecliptic of the date for the versions C and D.
 
 ## Args
 
-    tdj,ivers,ibody,prec :  Julian date, VSOP version (main,A,B,C,D,E series), body select code, preset precision
+    tdj,ivers,ibody,prec :  Julian date, VSOP version (main,A,B,C,D,E series), body select code,
+    preset of relative precision
 
     The code ivers of the version is :
     iv = 0 for the main version VSOP87 :  Heliocentric elliptic elements J2000
@@ -65,6 +66,11 @@ and ecliptic of the date for the versions C and D.
     8 : Neptune
     9 : Earth-Moon barycenter for the version A and Sun for the version E.
 
+    prec : Preset of desired relative precision (full or reduced precision of result).
+           If prec is equal to 0.0 then the precision is the precision p0 of the
+           complete solution VSOP87 (full precision). That's the default.
+           For more details see header of deps/vsop87.f.
+
 
 ## Return
     rar  : 6-element Array{Float64} with results, depending on value of ivers
@@ -76,6 +82,7 @@ and ecliptic of the date for the versions C and D.
         3: precision error (check up prec parameter)
         4: reading file error
 
+
 ## Reference
 
 Bretagnon P., Francou G., : 1988, Astron. Astrophys., 202, 309.
@@ -84,9 +91,9 @@ See also:
 - ftp://cdsarc.u-strasbg.fr/pub/cats/VI/81/ReadMe
 - https://github.com/ctdk/vsop87
 *********************************************************************************************************************************"""
-function vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64)
+function vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64 = 0.0)
 
-    path = dirname(VSOP87.lib)  # path of dep/ were shared lib is
+    path = dirname(VSOP87.lib)
     plen = convert(Int32,length(path))
 
     ierr = Ref{Signed}(0)
@@ -98,8 +105,6 @@ function vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64)
     if (ierr[] < 0) @warn("Cannot open VSOP87x.xxx file") end
 
     return rar,ierr[]
-
-    # TODO: Files nur einmal öffnen zwischen einzelnen Calls
 
 end
 

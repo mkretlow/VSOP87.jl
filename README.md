@@ -6,10 +6,10 @@ This is a Julia wrapper to the [Fortran VSOP87](https://github.com/ctdk/vsop87) 
 
 ```julia
 
-julia> Pkg.add("https://github.com/mkretlow/VSOP87.jl.git")
-julia> Pkg.build(VSOP87)
+pkg> add "https://github.com/mkretlow/VSOP87.jl.git"
 
-julia> rar = vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64)
+
+julia> rar = vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64 = 0.0)
 ```
 ## Args
 
@@ -34,6 +34,20 @@ julia> rar = vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64)
     8 : Neptune
     9 : Earth-Moon barycenter for the version A and Sun for the version E.
 
+    prec : Preset of desired relative precision (full or reduced precision of result).
+           If prec is equal to 0.0 then the precision is the precision p0 of the
+           complete solution VSOP87 (full precision). That's the default.
+           Mercury    p0 =  0.6 10**-8
+           Venus      p0 =  2.5 10**-8
+           Earth      p0 =  2.5 10**-8
+           Mars       p0 = 10.0 10**-8
+           Jupiter    p0 = 35.0 10**-8
+           Saturn     p0 = 70.0 10**-8
+           Uranus     p0 =  8.0 10**-8
+           Neptune    p0 = 42.0 10**-8
+
+    Other values (let's say between p0 and 10^-2) are possible.
+    For more details see header of deps/vsop87.f.
 
 ## Return
     rar  : 6-element Array{Float64} with results, depending on value of ivers
@@ -44,3 +58,12 @@ julia> rar = vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64)
         2: file error (check up ibody index)
         3: precision error (check up prec parameter)
         4: reading file error
+
+## Example
+
+    # Heliocentric rectangular coordinates and velocities of Earth for JD2451545.0 (2000-01-01.5 TDB):
+
+    julia> vsop87(2451545.0, 1, 3)
+    ([-0.177135, 0.967242, -3.90003e-6, -0.0172076, -0.00315879, 1.06867e-7], 0)
+    
+
