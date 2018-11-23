@@ -1,6 +1,6 @@
 # VSOP87.jl [![Build Status](https://travis-ci.org/mkretlow/VSOP87.jl.png?branch=master)](https://travis-ci.org/mkretlow/VSOP87.jl)
 
-This is a Julia wrapper to the [Fortran VSOP87](https://github.com/ctdk/vsop87) implementation of the planetary solutions VSOP87. 
+This is a Julia wrapper to the [Fortran VSOP87](https://github.com/ctdk/vsop87) implementation of the planetary solutions VSOP87.
 
 # Usage
 
@@ -8,6 +8,7 @@ This is a Julia wrapper to the [Fortran VSOP87](https://github.com/ctdk/vsop87) 
 
 pkg> add "https://github.com/mkretlow/VSOP87.jl.git"
 
+julia> using VSOP87
 
 julia> rar = vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64 = 0.0)
 ```
@@ -65,5 +66,3 @@ julia> rar = vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64 = 
 
     julia> vsop87(2451545.0, 1, 3)
     ([-0.177135, 0.967242, -3.90003e-6, -0.0172076, -0.00315879, 1.06867e-7], 0)
-    
-
