@@ -2,6 +2,11 @@
 
 This is a Julia wrapper to the [Fortran VSOP87](https://github.com/ctdk/vsop87) implementation of the planetary solutions VSOP87.
 
+
+## Install
+VSOP87.jl can then be installed through Julia's package manager. On Linux and macOS you need to have either Gfortran or the Intel Fortran Compiler installed to be able to build the binary dependencies.
+
+
 # Usage
 
 ```julia
