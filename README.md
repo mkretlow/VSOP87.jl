@@ -66,8 +66,9 @@ julia> rar = vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64 = 
         4: reading file error
 
 ## Example
+```julia
+# Heliocentric rectangular coordinates and velocities of Earth for JD2451545.0 (2000-01-01.5 TDB):
 
-    # Heliocentric rectangular coordinates and velocities of Earth for JD2451545.0 (2000-01-01.5 TDB):
-
-    julia> vsop87(2451545.0, 1, 3)
-    ([-0.177135, 0.967242, -3.90003e-6, -0.0172076, -0.00315879, 1.06867e-7], 0)
+julia> vsop87(2451545.0, 1, 3)
+([-0.177135, 0.967242, -3.90003e-6, -0.0172076, -0.00315879, 1.06867e-7], 0)
+```
