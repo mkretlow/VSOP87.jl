@@ -5,19 +5,22 @@ This is a Julia wrapper to the [Fortran VSOP87](https://github.com/ctdk/vsop87) 
 
 ## Install
 VSOP87.jl can then be installed through Julia's package manager. On Linux and macOS you need to have either Gfortran or the Intel Fortran Compiler installed to be able to build the binary dependencies.
-
-
-# Usage
-
 ```julia
 
 pkg> add "https://github.com/mkretlow/VSOP87.jl.git"
+```
 
+## Usage
+
+```julia
 julia> using VSOP87
 
-julia> rar = vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64 = 0.0)
+# vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64 = 0.0)
+
+julia> rar,ierr = vsop87(tjd, ivers, ibody, prec)
 ```
-## Args
+
+### Args
 
     tdj,ivers,ibody,prec :  Julian date, VSOP version (main,A,B,C,D,E series), body select code, preset precision
 
@@ -55,7 +58,7 @@ julia> rar = vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64 = 
     Other values (let's say between p0 and 10^-2) are possible.
     For more details see header of deps/vsop87.f.
 
-## Return
+### Return
     rar  : 6-element Array{Float64} with results, depending on value of ivers
 
     ierr : Error return code
@@ -72,3 +75,5 @@ julia> rar = vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64 = 
 julia> vsop87(2451545.0, 1, 3)
 ([-0.177135, 0.967242, -3.90003e-6, -0.0172076, -0.00315879, 1.06867e-7], 0)
 ```
+
+---
