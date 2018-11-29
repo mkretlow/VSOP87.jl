@@ -1,5 +1,5 @@
 # ==================================================================================================================================
-# Package: VSOP87 : Mike Kretlow [github.com/mkretlow and astrodynamics.de], Start 2018, (MIT License)
+# Module https://github.com/mkretlow/VSOP87.jl : Mike Kretlow [astrodynamics.de], Start 2018, MIT "Expat" License
 # ==================================================================================================================================
 
 module VSOP87
