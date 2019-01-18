@@ -33,15 +33,16 @@ julia> rar,ierr = vsop87(tjd, ivers, ibody, prec)
     iv = 5 for the version VSOP87E     :  Barycentric rectangular variables J2000
 
     The codes of the bodies are :
+    0 : Sun
     1 : Mercury
     2 : Venus
-    3 : Earth for the versions A-E and Earth-Moon Barycenter for the main version
+    3 : Earth
     4 : Mars
     5 : Jupiter
     6 : Saturn
     7 : Uranus
     8 : Neptune
-    9 : Earth-Moon barycenter for the version A and Sun for the version E.
+    9 : Earth-Moon barycenter
 
     prec : Preset of desired relative precision (full or reduced precision of result).
            If prec is equal to 0.0 then the precision is the precision p0 of the

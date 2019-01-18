@@ -56,15 +56,16 @@ and ecliptic of the date for the versions C and D.
     iv = 5 for the version VSOP87E     :  Barycentric rectangular variables J2000
 
     The codes of the bodies are :
+    0 : Sun
     1 : Mercury
     2 : Venus
-    3 : Earth for the versions A-E and Earth-Moon Barycenter for the main version
+    3 : Earth
     4 : Mars
     5 : Jupiter
     6 : Saturn
     7 : Uranus
     8 : Neptune
-    9 : Earth-Moon barycenter for the version A and Sun for the version E.
+    9 : Earth-Moon barycenter
 
     prec : Preset of desired relative precision (full or reduced precision of result).
            If prec is equal to 0.0 then the precision is the precision p0 of the
@@ -96,11 +97,11 @@ function vsop87(tjd::Float64, ivers::Signed, ibody::Signed, prec::Float64 = 0.0)
     path = dirname(VSOP87.lib)
     plen = convert(Int32,length(path))
 
-    ierr = Ref{Signed}(0)
+    ierr = Ref{Int32}(0)
     rar  = zeros(Float64,6)
 
-    ccall((:vsop87jul_,lib),Nothing,(Ptr{Cchar},Ref{Int32},Ref{Float64},Ref{Signed},Ref{Signed},Ref{Float64},Ref{Float64},Ref{Signed}),
-                                     path,plen,tjd,ivers,ibody,prec,rar,ierr)
+    ccall((:vsop87jul_,lib),Nothing,(Ptr{Cchar},Ref{Int32},Ref{Float64},Ref{Int32},Ref{Int32},Ref{Float64},Ref{Float64},Ref{Int32}),
+                                     path,plen,tjd,convert(Int32,ivers),convert(Int32,ibody),prec,rar,ierr)
 
     if (ierr[] < 0) @warn("Cannot open VSOP87x.xxx file") end
 
