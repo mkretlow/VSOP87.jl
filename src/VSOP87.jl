@@ -12,7 +12,7 @@ export vsop87
 
 # Load shared library
 
-const lib = find_library(["libvsop87"],["deps", joinpath(dirname(@__FILE__), "..", "deps")])
+const lib = find_library(["libvsop87"],[dirname(@__FILE__), joinpath(dirname(@__FILE__), "..", "deps"), "deps",])
 
 if isempty(lib)
 	error("Could not find shared library")
