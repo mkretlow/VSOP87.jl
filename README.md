@@ -1,5 +1,4 @@
 # VSOP87.jl [![Build Status](https://travis-ci.org/mkretlow/VSOP87.jl.svg?branch=master)](https://travis-ci.org/mkretlow/VSOP87.jl)
-
 This is a Julia wrapper to the [Fortran VSOP87](https://github.com/ctdk/vsop87) implementation of the planetary solutions VSOP87.
 
 
