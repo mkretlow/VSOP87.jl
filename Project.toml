@@ -1,0 +1,10 @@
+name = "VSOP87"
+uuid = "16b5abef-a1e8-4932-9295-a240313d64fa"
+version = "0.1.0"
+authors = ["Mike Kretlow <mike@kretlow.de>"]
+
+[deps]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[compat]
+Test = "1.11.0"
