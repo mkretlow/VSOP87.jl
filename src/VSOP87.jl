@@ -26,9 +26,7 @@
    vol. 202, p309-p315
    1988
 
-   Source code provided under the provisions of the
-   GNU General Public License (GPL), version 3.
-   http://www.gnu.org/licenses/gpl.html
+   Released under the MIT License; see the LICENSE file.
 """
 
 module VSOP87

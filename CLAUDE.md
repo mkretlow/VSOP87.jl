@@ -79,6 +79,7 @@ all eight files — a script (`sed`/Julia) is safer than manual edits.
 
 ## Known caveats
 
-- License mismatch: `LICENSE` is MIT, but the header docstring in `src/VSOP87.jl` carries
-  the GPL v3 notice inherited from the C++ generator. Don't change either without asking.
+- License: MIT (`LICENSE` and the header docstring in `src/VSOP87.jl`). The C++ generator
+  output was GPL v3; the GPL notice was removed on 2026-10-10 at the owner's request.
+  Don't change licensing without asking.
 - The package is not registered in the General registry yet.
