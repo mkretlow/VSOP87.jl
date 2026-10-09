@@ -17,9 +17,7 @@ function VSOP87A_Jupiter(jd_tt::Float64)
 end
 
 
-function VSOP87A_Jupiter(jd_tt::Int)
-    return VSOP87A_Jupiter(float(jd_tt))
-end
+VSOP87A_Jupiter(jd_tt::Real) = VSOP87A_Jupiter(Float64(jd_tt))
 
 
 function Jupiter_X0(t::Float64) # 1055 terms of order 0

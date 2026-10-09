@@ -17,9 +17,7 @@ function VSOP87A_Venus(jd_tt::Float64)
 end
 
 
-function VSOP87A_Venus(jd_tt::Int)
-    return VSOP87A_Venus(float(jd_tt))
-end
+VSOP87A_Venus(jd_tt::Real) = VSOP87A_Venus(Float64(jd_tt))
 
 
 function Venus_X0(t::Float64) # 548 terms of order 0

@@ -31,40 +31,6 @@
 
 module VSOP87
 
-function VSOP87A(body::Symbol, jd_tt::Real)
-
-   if body == :Mercury
-      return VSOP87A_Mercury(float(jd_tt))
-
-   elseif body == :Venus
-      return VSOP87A_Venus(float(jd_tt))
-
-   elseif body == :Earth
-      return VSOP87A_Earth(float(jd_tt))
-
-   elseif body == :Mars
-      return VSOP87A_Mars(float(jd_tt))
-
-   elseif body == :Jupiter
-      return VSOP87A_Jupiter(float(jd_tt))
-
-   elseif body == :Saturn
-      return VSOP87A_Saturn(float(jd_tt))
-
-   elseif body == :Uranus
-      return VSOP87A_Uranus(float(jd_tt))
-
-   elseif body == :Neptune
-      return VSOP87A_Neptune(float(jd_tt))
-
-   else
-      error("Body unknown: ", body)
-   end
-
-end
-
-export VSOP87A
-
 include("VSOP87A_Mercury.jl");  export VSOP87A_Mercury
 include("VSOP87A_Venus.jl");    export VSOP87A_Venus
 include("VSOP87A_Earth.jl");    export VSOP87A_Earth
@@ -73,5 +39,20 @@ include("VSOP87A_Jupiter.jl");  export VSOP87A_Jupiter
 include("VSOP87A_Saturn.jl");   export VSOP87A_Saturn
 include("VSOP87A_Uranus.jl");   export VSOP87A_Uranus
 include("VSOP87A_Neptune.jl");  export VSOP87A_Neptune
+
+# Version A entry point for each body
+const BODIES_A = (Mercury = VSOP87A_Mercury, Venus  = VSOP87A_Venus,
+                  Earth   = VSOP87A_Earth,   Mars   = VSOP87A_Mars,
+                  Jupiter = VSOP87A_Jupiter, Saturn = VSOP87A_Saturn,
+                  Uranus  = VSOP87A_Uranus,  Neptune = VSOP87A_Neptune)
+
+function VSOP87A(body::Symbol, jd_tt::Real)
+   haskey(BODIES_A, body) ||
+      throw(ArgumentError("unknown body :$body; valid bodies are " *
+                          join((":" * string(b) for b in keys(BODIES_A)), ", ")))
+   return BODIES_A[body](jd_tt)
+end
+
+export VSOP87A
 
 end # module

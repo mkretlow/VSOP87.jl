@@ -17,9 +17,7 @@ function VSOP87A_Saturn(jd_tt::Float64)
 end
 
 
-function VSOP87A_Saturn(jd_tt::Int)
-    return VSOP87A_Saturn(float(jd_tt))
-end
+VSOP87A_Saturn(jd_tt::Real) = VSOP87A_Saturn(Float64(jd_tt))
 
 
 function Saturn_X0(t::Float64) # 1652 terms of order 0

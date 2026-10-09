@@ -17,9 +17,7 @@ function VSOP87A_Mars(jd_tt::Float64)
 end
 
 
-function VSOP87A_Mars(jd_tt::Int)
-    return VSOP87A_Mars(float(jd_tt))
-end
+VSOP87A_Mars(jd_tt::Real) = VSOP87A_Mars(Float64(jd_tt))
 
 
 function Mars_X0(t::Float64) # 1584 terms of order 0

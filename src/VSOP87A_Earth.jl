@@ -17,9 +17,7 @@ function VSOP87A_Earth(jd_tt::Float64)
 end
 
 
-function VSOP87A_Earth(jd_tt::Int)
-    return VSOP87A_Earth(float(jd_tt))
-end
+VSOP87A_Earth(jd_tt::Real) = VSOP87A_Earth(Float64(jd_tt))
 
 
 function Earth_X0(t::Float64) # 843 terms of order 0

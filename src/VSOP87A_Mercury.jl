@@ -17,9 +17,7 @@ function VSOP87A_Mercury(jd_tt::Float64)
 end
 
 
-function VSOP87A_Mercury(jd_tt::Int)
-    return VSOP87A_Mercury(float(jd_tt))
-end
+VSOP87A_Mercury(jd_tt::Real) = VSOP87A_Mercury(Float64(jd_tt))
     
 
 function Mercury_X0(t::Float64) # 1449 terms of order 0

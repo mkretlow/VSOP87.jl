@@ -17,8 +17,9 @@ Precompilation is slow-ish because the source is ~40k lines of unrolled series.
 
 ## Layout
 
-- `src/VSOP87.jl` — module file: header docstring, the `VSOP87A(body::Symbol, jd_tt::Real)`
-  dispatcher, `include`s and `export`s. This is the only hand-written source file.
+- `src/VSOP87.jl` — module file: header docstring, `include`s and `export`s, the `BODIES_A`
+  lookup table (body Symbol → entry point) and the `VSOP87A(body::Symbol, jd_tt::Real)`
+  dispatcher. This is the only hand-written source file.
 - `src/VSOP87A_<Planet>.jl` — one file per planet, **machine-converted** from C++ produced by
   Jay Tanner's VSOP87 Source Code Generator. Do not reformat or hand-edit the coefficient lines.
 - `test/runtests.jl` — reference positions per planet at 10 epochs, 100 years apart
@@ -42,7 +43,7 @@ function VSOP87A_<Planet>(jd_tt::Float64)
     return pos
 end
 
-VSOP87A_<Planet>(jd_tt::Int) = ...                 # forwards to the Float64 method
+VSOP87A_<Planet>(jd_tt::Real) = VSOP87A_<Planet>(Float64(jd_tt))   # any other Real
 
 function <Planet>_X0(t::Float64) # 843 terms of order 0
     X0 = 0.0

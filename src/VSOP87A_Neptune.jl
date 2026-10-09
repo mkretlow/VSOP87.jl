@@ -17,9 +17,7 @@ function VSOP87A_Neptune(jd_tt::Float64)
 end
 
 
-function VSOP87A_Neptune(jd_tt::Int)
-    return VSOP87A_Neptune(float(jd_tt))
-end
+VSOP87A_Neptune(jd_tt::Real) = VSOP87A_Neptune(Float64(jd_tt))
 
 
 function Neptune_X0(t::Float64) # 772 terms of order 0

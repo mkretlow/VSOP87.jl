@@ -17,9 +17,7 @@ function VSOP87A_Uranus(jd_tt::Float64)
 end
 
 
-function VSOP87A_Uranus(jd_tt::Int)
-    return VSOP87A_Uranus(float(jd_tt))
-end
+VSOP87A_Uranus(jd_tt::Real) = VSOP87A_Uranus(Float64(jd_tt))
 
 
 function Uranus_X0(t::Float64) # 1464 terms of order 0

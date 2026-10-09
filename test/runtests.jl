@@ -113,4 +113,11 @@ using Test, VSOP87
         pos = VSOP87A(:Neptune, 2122820);  @test pos ≈ [-22.7985170870, +19.5994768858, +0.1206374034]
     end
 
+    @testset "Arguments" begin
+        @test_throws ArgumentError VSOP87A(:Pluto, 2451545)
+        @test VSOP87A_Earth(2451545) == VSOP87A_Earth(2451545.0)
+        @test VSOP87A_Earth(2451545.0f0) == VSOP87A_Earth(2451545.0)
+        @test VSOP87A_Earth(4903090//2) == VSOP87A_Earth(2451545.0)
+    end
+
 end
