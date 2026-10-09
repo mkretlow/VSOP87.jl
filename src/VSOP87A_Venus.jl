@@ -4,10 +4,10 @@
    Rectangular (X,Y,Z) Coordinates in AU (Astronomical Units)
 """
 
-function VSOP87A_Venus(YDTT::Float64)
+function VSOP87A_Venus(jd_tt::Float64)
     pos = zeros(3)
 
-    t = (YDTT - 2451545.0 ) / 365250.0
+    t = (jd_tt - 2451545.0 ) / 365250.0
 
     pos[1] = Venus_X0(t) + Venus_X1(t) + Venus_X2(t) + Venus_X3(t) + Venus_X4(t) + Venus_X5(t)
     pos[2] = Venus_Y0(t) + Venus_Y1(t) + Venus_Y2(t) + Venus_Y3(t) + Venus_Y4(t) + Venus_Y5(t)
@@ -17,8 +17,8 @@ function VSOP87A_Venus(YDTT::Float64)
 end
 
 
-function VSOP87A_Venus(YDTT::Int)
-    return VSOP87A_Venus(float(YDTT))
+function VSOP87A_Venus(jd_tt::Int)
+    return VSOP87A_Venus(float(jd_tt))
 end
 
 

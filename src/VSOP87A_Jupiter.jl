@@ -4,10 +4,10 @@
    Rectangular (X,Y,Z) Coordinates in AU (Astronomical Units)
 """
 
-function VSOP87A_Jupiter(YDTT::Float64)
+function VSOP87A_Jupiter(jd_tt::Float64)
     pos = zeros(3)
 
-    t = (YDTT - 2451545.0 ) / 365250.0
+    t = (jd_tt - 2451545.0 ) / 365250.0
 
     pos[1] = Jupiter_X0(t) + Jupiter_X1(t) + Jupiter_X2(t) + Jupiter_X3(t) + Jupiter_X4(t) + Jupiter_X5(t)
     pos[2] = Jupiter_Y0(t) + Jupiter_Y1(t) + Jupiter_Y2(t) + Jupiter_Y3(t) + Jupiter_Y4(t) + Jupiter_Y5(t)
@@ -17,8 +17,8 @@ function VSOP87A_Jupiter(YDTT::Float64)
 end
 
 
-function VSOP87A_Jupiter(YDTT::Int)
-    return VSOP87A_Jupiter(float(YDTT))
+function VSOP87A_Jupiter(jd_tt::Int)
+    return VSOP87A_Jupiter(float(jd_tt))
 end
 
 

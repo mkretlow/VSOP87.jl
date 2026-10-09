@@ -4,10 +4,10 @@
    Rectangular (X,Y,Z) Coordinates in AU (Astronomical Units)
 """
 
-function VSOP87A_Uranus(YDTT::Float64)
+function VSOP87A_Uranus(jd_tt::Float64)
     pos = zeros(3)
 
-    t = (YDTT - 2451545.0 ) / 365250.0
+    t = (jd_tt - 2451545.0 ) / 365250.0
 
     pos[1] = Uranus_X0(t) + Uranus_X1(t) + Uranus_X2(t) + Uranus_X3(t) + Uranus_X4(t) + Uranus_X5(t)
     pos[2] = Uranus_Y0(t) + Uranus_Y1(t) + Uranus_Y2(t) + Uranus_Y3(t) + Uranus_Y4(t) + Uranus_Y5(t)
@@ -17,8 +17,8 @@ function VSOP87A_Uranus(YDTT::Float64)
 end
 
 
-function VSOP87A_Uranus(YDTT::Int)
-    return VSOP87A_Uranus(float(YDTT))
+function VSOP87A_Uranus(jd_tt::Int)
+    return VSOP87A_Uranus(float(jd_tt))
 end
 
 

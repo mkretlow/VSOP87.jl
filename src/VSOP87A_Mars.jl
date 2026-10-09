@@ -4,10 +4,10 @@
    Rectangular (X,Y,Z) Coordinates in AU (Astronomical Units)
 """
 
-function VSOP87A_Mars(YDTT::Float64)
+function VSOP87A_Mars(jd_tt::Float64)
     pos = zeros(3)
 
-    t = (YDTT - 2451545.0 ) / 365250.0
+    t = (jd_tt - 2451545.0 ) / 365250.0
 
     pos[1] = Mars_X0(t) + Mars_X1(t) + Mars_X2(t) + Mars_X3(t) + Mars_X4(t) + Mars_X5(t)
     pos[2] = Mars_Y0(t) + Mars_Y1(t) + Mars_Y2(t) + Mars_Y3(t) + Mars_Y4(t) + Mars_Y5(t)
@@ -17,8 +17,8 @@ function VSOP87A_Mars(YDTT::Float64)
 end
 
 
-function VSOP87A_Mars(YDTT::Int)
-    return VSOP87A_Mars(float(YDTT))
+function VSOP87A_Mars(jd_tt::Int)
+    return VSOP87A_Mars(float(jd_tt))
 end
 
 

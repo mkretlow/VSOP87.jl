@@ -4,10 +4,10 @@
    Rectangular (X,Y,Z) Coordinates in AU (Astronomical Units)
 """
 
-function VSOP87A_Neptune(YDTT::Float64)
+function VSOP87A_Neptune(jd_tt::Float64)
     pos = zeros(3)
 
-    t = (YDTT - 2451545.0 ) / 365250.0
+    t = (jd_tt - 2451545.0 ) / 365250.0
 
     pos[1] = Neptune_X0(t) + Neptune_X1(t) + Neptune_X2(t) + Neptune_X3(t) + Neptune_X4(t) + Neptune_X5(t)
     pos[2] = Neptune_Y0(t) + Neptune_Y1(t) + Neptune_Y2(t) + Neptune_Y3(t) + Neptune_Y4(t) + Neptune_Y5(t)
@@ -17,8 +17,8 @@ function VSOP87A_Neptune(YDTT::Float64)
 end
 
 
-function VSOP87A_Neptune(YDTT::Int)
-    return VSOP87A_Neptune(float(YDTT))
+function VSOP87A_Neptune(jd_tt::Int)
+    return VSOP87A_Neptune(float(jd_tt))
 end
 
 

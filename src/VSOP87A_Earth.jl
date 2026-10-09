@@ -4,10 +4,10 @@
    Rectangular (X,Y,Z) Coordinates in AU (Astronomical Units)
 """
 
-function VSOP87A_Earth(YDTT::Float64)
+function VSOP87A_Earth(jd_tt::Float64)
     pos = zeros(3)
 
-    t = (YDTT - 2451545.0 ) / 365250.0
+    t = (jd_tt - 2451545.0 ) / 365250.0
 
     pos[1] = Earth_X0(t) + Earth_X1(t) + Earth_X2(t) + Earth_X3(t) + Earth_X4(t) + Earth_X5(t)
     pos[2] = Earth_Y0(t) + Earth_Y1(t) + Earth_Y2(t) + Earth_Y3(t) + Earth_Y4(t) + Earth_Y5(t)
@@ -17,8 +17,8 @@ function VSOP87A_Earth(YDTT::Float64)
 end
 
 
-function VSOP87A_Earth(YDTT::Int)
-    return VSOP87A_Earth(float(YDTT))
+function VSOP87A_Earth(jd_tt::Int)
+    return VSOP87A_Earth(float(jd_tt))
 end
 
 

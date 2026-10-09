@@ -4,10 +4,10 @@
    Rectangular (X,Y,Z) Coordinates in AU (Astronomical Units)
 """
 
-function VSOP87A_Saturn(YDTT::Float64)
+function VSOP87A_Saturn(jd_tt::Float64)
     pos = zeros(3)
 
-    t = (YDTT - 2451545.0 ) / 365250.0
+    t = (jd_tt - 2451545.0 ) / 365250.0
 
     pos[1] = Saturn_X0(t) + Saturn_X1(t) + Saturn_X2(t) + Saturn_X3(t) + Saturn_X4(t) + Saturn_X5(t)
     pos[2] = Saturn_Y0(t) + Saturn_Y1(t) + Saturn_Y2(t) + Saturn_Y3(t) + Saturn_Y4(t) + Saturn_Y5(t)
@@ -17,8 +17,8 @@ function VSOP87A_Saturn(YDTT::Float64)
 end
 
 
-function VSOP87A_Saturn(YDTT::Int)
-    return VSOP87A_Saturn(float(YDTT))
+function VSOP87A_Saturn(jd_tt::Int)
+    return VSOP87A_Saturn(float(jd_tt))
 end
 
 

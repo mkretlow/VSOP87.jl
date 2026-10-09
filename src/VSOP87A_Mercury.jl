@@ -4,10 +4,10 @@
    Rectangular (X,Y,Z) Coordinates in AU (Astronomical Units)
 """
 
-function VSOP87A_Mercury(YDTT::Float64)
+function VSOP87A_Mercury(jd_tt::Float64)
     pos = zeros(3)
 
-    t = (YDTT - 2451545.0 ) / 365250.0
+    t = (jd_tt - 2451545.0 ) / 365250.0
 
     pos[1] = Mercury_X0(t) + Mercury_X1(t) + Mercury_X2(t) + Mercury_X3(t) + Mercury_X4(t) + Mercury_X5(t)
     pos[2] = Mercury_Y0(t) + Mercury_Y1(t) + Mercury_Y2(t) + Mercury_Y3(t) + Mercury_Y4(t) + Mercury_Y5(t)
@@ -17,8 +17,8 @@ function VSOP87A_Mercury(YDTT::Float64)
 end
 
 
-function VSOP87A_Mercury(YDTT::Int)
-    return VSOP87A_Mercury(float(YDTT))
+function VSOP87A_Mercury(jd_tt::Int)
+    return VSOP87A_Mercury(float(jd_tt))
 end
     
 
