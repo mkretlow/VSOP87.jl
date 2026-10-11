@@ -28,6 +28,8 @@ Precompilation is slow-ish because the source is ~40k lines of unrolled series.
 - `.github/workflows/CI.yml` — tests on Julia 1.6 (minimum, matches `[compat]`) and latest
   on Linux/macOS/Windows; Codecov upload; a Documenter `docs` job exists but is disabled
   (`if: false`, no `docs/` directory yet).
+- `.github/workflows/TagBot.yml` — standard TagBot template (triggered by JuliaTagBot comments or
+  manually, no cron). Idle until the package is registered; `v0.1.0` was tagged by hand.
 
 ## Planet file structure
 
